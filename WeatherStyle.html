@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="./WeatherStyle.scss">
+  
+  <ion-toolbar>
+    <ion-title>
+      Weather app
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+   <div class="search">
+     <input type="text" placeholder="Cari Nama Kota">
+     <button><img src="assets/icon/search.jpeg" alt="hujan"> </button>
+    </div>
+    <div class="error">
+        <p>Invalid City Name</p>
+    </div>
+    <div class="hujan">
+      <img src="assets/icon/Awan.jpeg" class="icon" alt="">
+      <h1 class="celcius">22°c</h1>
+      <h2 class="city">Manado</h2>
+      <div class="detail">
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const searchinput = deocument.querySelector('.search input');
+    const searchBtn = document.querySelector('.search button');
+    const image = document.querySelector('icon');
+
+    async fucntion getWeather(city) {
+      var res = fetch('')
+      if(res.status == 404) {
+        document.querySelector('.error').style.display = "block";
+      } else {
+        document.querySelector('.error').style.display = "none";
+      }
+      var data = await res.jason();
+      consule.log(data);
+      //document.querySelector('.celcius').innerHTML = data.main.temp;
+      //document.querySelector('.city').innerHTML = data.name;
+
+      if(data.Weather{0}.main == "Awan") {
+        img.src = "assets/icon/Awan.jpeg"
+      } else if(data.weather[0].main == "Panas") {\
+        img.src = "assets/icon/Panas.jpeg"
+      }
+    }
+
+    searchBtn.addEventListener('click', () => (
+    getWeather(searchinput.value);
+    ))
+  </script>
+
+</ion-content>
